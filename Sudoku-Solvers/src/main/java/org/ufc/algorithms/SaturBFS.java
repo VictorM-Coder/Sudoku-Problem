@@ -10,16 +10,12 @@ public class SaturBFS {
     private final Integer numberOfVertices;
     private final Integer degreeSudoku;
 
-    public SaturBFS(
-            Integer[] vertexColor,
-            Integer[][] graphAdjacencyMatrix,
-            Integer numberOfVertices,
-            Integer degreeSudoku
+    public SaturBFS(SudokuType sudokuType
     ) {
-        this.vertexColor = vertexColor;
-        this.graphAdjacencyMatrix = graphAdjacencyMatrix;
-        this.numberOfVertices = numberOfVertices;
-        this.degreeSudoku = degreeSudoku;
+        this.graphAdjacencyMatrix = generateAdjacencyMatrix(sudokuType);
+        this.numberOfVertices = sudokuType.getDegree()*sudokuType.getDegree();
+        this.degreeSudoku = sudokuType.getDegree();
+        this.vertexColor = new Integer[this.numberOfVertices];
     }
 
     public boolean saturBFS() {
@@ -45,8 +41,7 @@ public class SaturBFS {
                 vertexColor[verticeAdj] = cor;
                 fila.add(verticeAdj);
 
-                verticeAdj =
-                        highestSaturationAdjacent(findAdjacentyVertex(vertice));
+                verticeAdj = highestSaturationAdjacent(findAdjacentyVertex(vertice));
             }
         }
         return true;
@@ -196,4 +191,69 @@ public class SaturBFS {
         }
         return adjacentVertex;
     }
+
+    public static Integer[][] generateAdjacencyMatrix(SudokuType sudokuType) {
+        int sudokuDegree = sudokuType.getDegree();
+        int numbersVertex = sudokuDegree * sudokuDegree;
+        int contVertex = 0;
+
+        Integer[][] vertexLabelMatrix = new Integer[sudokuDegree][sudokuDegree];
+        Integer[][] adjacencyMatrix = new Integer[numbersVertex][numbersVertex];
+
+        for(int i = 0; i < sudokuDegree; i++) {
+            for(int j = 0; j < sudokuDegree; j++) {
+                vertexLabelMatrix[i][j] = contVertex;
+                contVertex++;
+            }
+        }
+
+        for(int i = 0; i < numbersVertex; i++) {
+            for (int j = 0; j < numbersVertex; j++) {
+                if(j >= (i/ sudokuDegree)* sudokuDegree && j < (i/ sudokuDegree)* sudokuDegree + sudokuDegree)
+                    adjacencyMatrix[i][j] = 1;
+                else if(j% sudokuDegree == i% sudokuDegree)
+                    adjacencyMatrix[i][j] = 1;
+                else
+                    adjacencyMatrix[i][j] = 0;
+            }
+
+        }
+
+        List<Integer> verticesAdjacentes = new ArrayList<>();
+
+        int inicioColuna = 0;
+        for(int i = sudokuType.getBlockLineNumbers() ; i <= sudokuDegree; i += sudokuType.getBlockLineNumbers()) {
+            int inicioLinha = 0;
+            for(int f = sudokuType.getBlockLineNumbers() ; f <= sudokuDegree; f += sudokuType.getBlockLineNumbers()) {
+
+                for (int m = inicioLinha; m < f; m++) {
+                    for (int k = inicioColuna; k < i; k++) {
+                        Integer vertice = vertexLabelMatrix[m][k];
+                        verticesAdjacentes.add(vertice);
+                    }
+                }
+
+                //Ligar os vértices
+                for(int l = 0; l < verticesAdjacentes.size(); l++) {
+                    int v1 = verticesAdjacentes.get(l);
+                    for(int j = l; j < verticesAdjacentes.size(); j++) {
+                        int v2 = verticesAdjacentes.get(j);
+                        adjacencyMatrix[v1][v2] = adjacencyMatrix[v2][v1] = 1;
+                    }
+                }
+                verticesAdjacentes.clear();
+
+                inicioLinha = f;
+            }
+            inicioColuna = i;
+        }
+
+        for(int i = 0; i < numbersVertex; i++) {
+            adjacencyMatrix[i][i] = 0;
+        }
+
+        return adjacencyMatrix;
+
+    }
+
 }
