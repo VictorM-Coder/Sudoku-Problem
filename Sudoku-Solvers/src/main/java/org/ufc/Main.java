@@ -5,22 +5,12 @@ import org.ufc.algorithms.Backtracking;
 import org.ufc.algorithms.SudokuType;
 import org.ufc.utils.SudokuReader;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
+import static org.ufc.utils.SudokuDivider.dividirArray;
+
 public class Main {
-    public static Integer[][] dividirArray(Integer[] array, int tamanhoLinha) {
-        int linhas = array.length / tamanhoLinha;
-        Integer[][] resultado = new Integer[linhas][tamanhoLinha];
 
-        for (int i = 0; i < linhas; i++) {
-            for (int j = 0; j < tamanhoLinha; j++) {
-                resultado[i][j] = array[i * tamanhoLinha + j];
-            }
-        }
-
-        return resultado;
-    }
 
     public static void main(String[] args) {
         SudokuType S4 = new SudokuType(4, 2, 2);
