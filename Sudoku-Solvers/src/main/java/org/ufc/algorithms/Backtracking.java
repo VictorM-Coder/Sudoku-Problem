@@ -2,11 +2,13 @@ package org.ufc.algorithms;
 
 public class Backtracking {
     private final int N;
-    private final int k;
+    private final int kRow;
+    private final int kCol;
 
-    public Backtracking(int N, int k) {
+    public Backtracking(int N, int kRow, int kCol) {
         this.N = N;
-        this.k = k;
+        this.kRow = kRow;
+        this.kCol = kCol;
     }
 
     public boolean solveSudoku(Integer grid[][], int row, int col)
@@ -53,9 +55,9 @@ public class Backtracking {
             if (grid[x][col] == num)
                 return false;
 
-        int startRow = row - row % k, startCol = col - col % k;
-        for (int i = 0; i < k; i++)
-            for (int j = 0; j < k; j++)
+        int startRow = row - row % kRow, startCol = col - col % kCol;
+        for (int i = 0; i < kRow; i++)
+            for (int j = 0; j < kCol; j++)
                 if (grid[i + startRow][j + startCol] == num)
                     return false;
 
