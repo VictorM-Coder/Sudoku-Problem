@@ -2,6 +2,12 @@ package org.ufc.utils;
 
 public class SudokuDivider {
     public static Integer[][] dividirArray(Integer[] array, int tamanhoLinha) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                array[i] = 0;
+            }
+        }
+
         int linhas = array.length / tamanhoLinha;
         Integer[][] resultado = new Integer[linhas][tamanhoLinha];
 

@@ -5,10 +5,10 @@ public class Backtracking {
     private final int kRow;
     private final int kCol;
 
-    public Backtracking(int N, int kRow, int kCol) {
-        this.N = N;
-        this.kRow = kRow;
-        this.kCol = kCol;
+    public Backtracking(SudokuType sudokuType) {
+        this.N = sudokuType.getDegree();
+        this.kRow = sudokuType.getBlockLineNumbers();
+        this.kCol = sudokuType.getBlockColumnNumbers();
     }
 
     public boolean solveSudoku(Integer grid[][], int row, int col)
