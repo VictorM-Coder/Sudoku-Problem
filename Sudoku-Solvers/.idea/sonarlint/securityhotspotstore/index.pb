@@ -14,3 +14,9 @@ _
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+_
+/src/main/java/org/ufc/algorithms/Algorithm.java,6\7\67b1b0615e7d0118b33d0028b051a6ce5d7c54ca
+k
+;src/main/java/org/ufc/algorithms/SudokuSolverAlgorithm.java,0\5\055a8cd202208482116d7af46c17c68d7dcb1155
+b
+2src/main/java/org/ufc/algorithms/SudokuSolver.java,2\6\269ecf06d34901f5ede6b0d54eb8b8a0ba36f188

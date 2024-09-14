@@ -4,8 +4,10 @@ import org.ufc.algorithms.Backtracking;
 import org.ufc.algorithms.SaturBFS;
 import org.ufc.algorithms.SudokuType;
 
+import java.util.function.Supplier;
+
 public final class Tester {
-    private static int MAX_ATP = 1;
+    private static int MAX_ATP = 15000;
 
     private Tester() {}
 
@@ -43,14 +45,21 @@ public final class Tester {
 
     private static void testSudokuBacktrackingByDifficult(SudokuType type, Difficult difficult) {
         Integer[] sudoku = SudokuReader.readSudokuFile(type, difficult);
+        double totalTimeExpended = 0;
+        int totalSudokuSolveds = 0;
 
         Backtracking backtracking = new Backtracking(type);
-        Integer[][] sudokuToBeSolved = SudokuDivider.dividirArray(sudoku, type.getDegree());
 
-        ExecutionResult executionResult = TimeCalculator.calcularTempoDeExecucao(
-                () -> backtracking.solveSudoku(sudokuToBeSolved, 0, 0));
+        for (int cont = 1; cont <= MAX_ATP; cont++) {
+            ExecutionResult executionResult = TimeCalculator.calcularTempoDeExecucao(
+                    () -> backtracking.solve(sudoku.clone())
+            );
 
-        System.out.printf("Tempo de execucao %s: %.16f \n", difficult.name() , executionResult.timeExpended());
+            totalTimeExpended += executionResult.timeExpended();
+            totalSudokuSolveds += executionResult.solved() ? 1: 0;
+        }
+
+        printFeedback(difficult, totalTimeExpended, totalSudokuSolveds);
     }
 
     private static void testSudokuBFSByDifficult(SudokuType type, Difficult difficult) {
@@ -65,12 +74,15 @@ public final class Tester {
                     () -> saturBFS.saturBFS(sudoku.clone())
             );
 
-//            System.out.printf("%.16f \n", executionResult.timeExpended());
             totalTimeExpended += executionResult.timeExpended();
             totalSudokuSolveds += executionResult.solved() ? 1: 0;
         }
 
+        printFeedback(difficult, totalTimeExpended, totalSudokuSolveds);
+    }
+
+    private static void printFeedback(Difficult difficult, double totalTimeExpended, int totalSudokuSolveds) {
         System.out.printf("Media do tempo de execucao %s: %.16f | Precisao: %.2f %n",
-                difficult.name() , totalTimeExpended/MAX_ATP, (totalSudokuSolveds*100.0)/MAX_ATP);
+                difficult.name() , totalTimeExpended/MAX_ATP, (totalSudokuSolveds *100.0)/MAX_ATP);
     }
 }

@@ -1,5 +1,7 @@
 package org.ufc.algorithms;
 
+import org.ufc.utils.SudokuDivider;
+
 public class Backtracking {
     private final int N;
     private final int kRow;
@@ -9,6 +11,11 @@ public class Backtracking {
         this.N = sudokuType.getDegree();
         this.kRow = sudokuType.getBlockLineNumbers();
         this.kCol = sudokuType.getBlockColumnNumbers();
+    }
+
+    public boolean solve(Integer[] sudoku) {
+        Integer[][] sudokuToBeSolved = SudokuDivider.dividirArray(sudoku.clone(), N);
+        return solveSudoku(sudokuToBeSolved, 0, 0);
     }
 
     public boolean solveSudoku(Integer grid[][], int row, int col)
@@ -33,16 +40,6 @@ public class Backtracking {
             grid[row][col] = 0;
         }
         return false;
-    }
-
-    /* A utility function to print grid */
-    public void print(Integer[][] grid)
-    {
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++)
-                System.out.print(grid[i][j] + " ");
-            System.out.println();
-        }
     }
 
     boolean isSafe(Integer[][] grid, int row, int col, int num)
