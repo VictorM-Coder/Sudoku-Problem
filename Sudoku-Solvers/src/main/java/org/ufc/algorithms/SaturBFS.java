@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class SaturBFS {
-    private final Integer[] vertexColor;
+    private Integer[] vertexColor;
     private final Integer[][] graphAdjacencyMatrix;
     private final Integer numberOfVertices;
     private final Integer degreeSudoku;
@@ -18,7 +18,8 @@ public class SaturBFS {
         this.vertexColor = new Integer[this.numberOfVertices];
     }
 
-    public boolean saturBFS() {
+    public boolean saturBFS(Integer[] vertexColor) {
+        this.vertexColor = vertexColor;
         Integer verticeInicio = highestSaturationVertex();
         Integer cor = colorirVertice(verticeInicio, degreeSudoku);
         vertexColor[verticeInicio] = cor;

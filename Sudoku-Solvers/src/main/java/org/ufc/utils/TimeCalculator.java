@@ -5,11 +5,12 @@ import java.util.function.Supplier;
 public final class TimeCalculator {
     private TimeCalculator() {}
 
-    public static double calcularTempoDeExecucao(Supplier supplier) {
-        double start = System.currentTimeMillis();
-        supplier.get();
-        double now = System.currentTimeMillis();
+    public static ExecutionResult calcularTempoDeExecucao(Supplier<Boolean> supplier) {
+        long start = System.currentTimeMillis();
+        Boolean solved = supplier.get();
+        long now = System.currentTimeMillis();
 
-        return (now - start) / 1000.0D;
+        double total = ((now - start) / 1_000.0);
+        return new ExecutionResult(solved, total);
     }
 }

@@ -1,0 +1,13 @@
+
+o
+java:S3008"RRename this field "MAX_ATP" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”³Ëà8¨½ˆŸ2
+L	java:S106"+Replace this use of System.out by a logger.(–“Ò»ûÿÿÿÿ8³½ˆŸ2
+L	java:S106"+Replace this use of System.out by a logger.(ˆšÑÖüÿÿÿÿ8µ½ˆŸ2
+G	java:S106"+Replace this use of System.out by a logger.(Óñİ®8¸½ˆŸ2
+L	java:S106!"+Replace this use of System.out by a logger.(óö„Ïøÿÿÿÿ8¶Ëõ‹Ÿ2
+L	java:S106'"+Replace this use of System.out by a logger.(óö„Ïøÿÿÿÿ8í°˜ŒŸ2
+s
+java:S34575"Q%n should be used in place of \n to produce the platform-specific line separator.(„ºÀõÿÿÿÿÿ8¸½ˆŸ2
+L	java:S1065"+Replace this use of System.out by a logger.(„ºÀõÿÿÿÿÿ8ƒ²ŒŸ2
+]	java:S125D"<This block of commented-out lines of code should be removed.(ëôÏ‰şÿÿÿÿ8æ‡ŒŸ2
+G	java:S106I"+Replace this use of System.out by a logger.(§¬ş8¢ƒ²ŒŸ2
