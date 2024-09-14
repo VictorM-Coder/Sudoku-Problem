@@ -1,6 +1,7 @@
 package org.ufc.utils;
 
-import org.ufc.algorithms.SudokuType;
+import org.ufc.sudoku.Difficult;
+import org.ufc.sudoku.SudokuType;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

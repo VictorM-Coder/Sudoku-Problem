@@ -1,7 +1,7 @@
 package org.ufc;
 
 
-import org.ufc.utils.Tester;
+import org.ufc.execution.Tester;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package org.ufc.utils;
+package org.ufc.execution;
 
 public record ExecutionResult(
         boolean solved,

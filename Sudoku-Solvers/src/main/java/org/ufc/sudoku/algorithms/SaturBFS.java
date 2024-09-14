@@ -1,10 +1,12 @@
-package org.ufc.algorithms;
+package org.ufc.sudoku.algorithms;
+
+import org.ufc.sudoku.SudokuType;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class SaturBFS {
+public class SaturBFS implements SudokuSolver {
     private Integer[] vertexColor;
     private final Integer[][] graphAdjacencyMatrix;
     private final Integer numberOfVertices;
@@ -18,11 +20,11 @@ public class SaturBFS {
         this.vertexColor = new Integer[this.numberOfVertices];
     }
 
-    public boolean saturBFS(Integer[] vertexColor) {
-        this.vertexColor = vertexColor;
+    public boolean solve(Integer[] sudoku) {
+        this.vertexColor = sudoku;
         Integer verticeInicio = highestSaturationVertex();
         Integer cor = colorirVertice(verticeInicio, degreeSudoku);
-        vertexColor[verticeInicio] = cor;
+        sudoku[verticeInicio] = cor;
 
         List<Integer> fila = new ArrayList<>();
         fila.add(verticeInicio);
@@ -39,7 +41,7 @@ public class SaturBFS {
                 if (cor == null) {
                     return false;
                 }
-                vertexColor[verticeAdj] = cor;
+                sudoku[verticeAdj] = cor;
                 fila.add(verticeAdj);
 
                 verticeAdj = highestSaturationAdjacent(findAdjacentyVertex(vertice));
@@ -254,7 +256,5 @@ public class SaturBFS {
         }
 
         return adjacencyMatrix;
-
     }
-
 }

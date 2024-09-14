@@ -1,12 +1,7 @@
 
-o
-java:S3008
-"RRename this field "MAX_ATP" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üçÕ«8‹şŒŸ2
-L	java:S106"+Replace this use of System.out by a logger.(–“Ò»ûÿÿÿÿ8™‹şŒŸ2
-L	java:S106"+Replace this use of System.out by a logger.(ˆšÑÖüÿÿÿÿ8™‹şŒŸ2
-G	java:S106"+Replace this use of System.out by a logger.(Óñİ®8œ‹şŒŸ2
-L	java:S106#"+Replace this use of System.out by a logger.(óö„Ïøÿÿÿÿ8‹şŒŸ2
-L	java:S106)"+Replace this use of System.out by a logger.(óö„Ïøÿÿÿÿ8Œ¢Ÿ2
-G	java:S106U"+Replace this use of System.out by a logger.(§¬ş8ïÃõŸ2
-U
-java:S1128"8Remove this unused import 'java.util.function.Supplier'.(†ïÿ‘8Æ°ÃŸ2
+L	java:S106"+Replace this use of System.out by a logger.(–“Ò»ûÿÿÿÿ8¸ÚÌŸ2
+L	java:S106"+Replace this use of System.out by a logger.(ˆšÑÖüÿÿÿÿ8¹ÚÌŸ2
+G	java:S106"+Replace this use of System.out by a logger.(Óñİ®8¹ÚÌŸ2
+G	java:S106#"+Replace this use of System.out by a logger.(€æêí8»ÚÌŸ2
+L	java:S106)"+Replace this use of System.out by a logger.(ªûÍ¤ÿÿÿÿÿ8¼ÚÌŸ2
+G	java:S106H"+Replace this use of System.out by a logger.(§¬ş8ÂÚÌŸ2

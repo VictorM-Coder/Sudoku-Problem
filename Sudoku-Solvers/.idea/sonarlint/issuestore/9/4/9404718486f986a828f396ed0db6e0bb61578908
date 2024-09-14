@@ -1,28 +1,28 @@
 
-E
-java:S1066D"/Merge this if statement with the enclosing one.(äıçÎ
-J
-java:S1066O"/Merge this if statement with the enclosing one.(í‡Ï³ùÿÿÿÿ
-F
-java:S1066"/Merge this if statement with the enclosing one.(äıçÎ
-K
-java:S1066š"/Merge this if statement with the enclosing one.(í‡Ï³ùÿÿÿÿ
-W
-java:S4973O"<Strings and Boxed types should be compared using "equals()".(í‡Ï³ùÿÿÿÿ
-W
-java:S4973x"<Strings and Boxed types should be compared using "equals()".(ˆøîÕøÿÿÿÿ
-X
-java:S4973š"<Strings and Boxed types should be compared using "equals()".(í‡Ï³ùÿÿÿÿ
-m
-java:S37763"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(‚ÃËöüÿÿÿÿ
-9
-java:S2119X"Save and re-use this "Random".(¡ìĞËùÿÿÿÿ
-V	java:S125p"<This block of commented-out lines of code should be removed.(¼ƒë®ÿÿÿÿÿ
-4
-java:S2119q"Save and re-use this "Random".(éÄÜŒ
-m
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(°»í­ùÿÿÿÿ
-5
-java:S2119£"Save and re-use this "Random".(•’ã‹
-i
-java:S3776Ä"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(è°ÜÎ
+L
+java:S1066D"/Merge this if statement with the enclosing one.(äıçÎ8‡ŒªŸ2
+Q
+java:S1066O"/Merge this if statement with the enclosing one.(í‡Ï³ùÿÿÿÿ8ˆŒªŸ2
+M
+java:S1066"/Merge this if statement with the enclosing one.(äıçÎ8ˆŒªŸ2
+R
+java:S1066š"/Merge this if statement with the enclosing one.(í‡Ï³ùÿÿÿÿ8ˆŒªŸ2
+^
+java:S4973O"<Strings and Boxed types should be compared using "equals()".(í‡Ï³ùÿÿÿÿ8ŠŒªŸ2
+^
+java:S4973x"<Strings and Boxed types should be compared using "equals()".(ˆøîÕøÿÿÿÿ8ŒŒªŸ2
+_
+java:S4973š"<Strings and Boxed types should be compared using "equals()".(í‡Ï³ùÿÿÿÿ8ŒªŸ2
+t
+java:S37763"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(‚ÃËöüÿÿÿÿ8‚”ªŸ2
+@
+java:S2119X"Save and re-use this "Random".(¡ìĞËùÿÿÿÿ8”ªŸ2
+]	java:S125p"<This block of commented-out lines of code should be removed.(¼ƒë®ÿÿÿÿÿ8ë­Ÿ2
+;
+java:S2119q"Save and re-use this "Random".(éÄÜŒ8””ªŸ2
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(°»í­ùÿÿÿÿ8š”ªŸ2
+<
+java:S2119£"Save and re-use this "Random".(•’ã‹8£”ªŸ2
+p
+java:S3776Ä"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(è°ÜÎ8²”ªŸ2

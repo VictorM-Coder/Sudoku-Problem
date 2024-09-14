@@ -1,13 +1,14 @@
-package org.ufc.utils;
+package org.ufc.execution;
 
-import org.ufc.algorithms.Backtracking;
-import org.ufc.algorithms.SaturBFS;
-import org.ufc.algorithms.SudokuType;
-
-import java.util.function.Supplier;
+import org.ufc.sudoku.algorithms.Backtracking;
+import org.ufc.sudoku.algorithms.SaturBFS;
+import org.ufc.sudoku.algorithms.SudokuSolver;
+import org.ufc.sudoku.Difficult;
+import org.ufc.sudoku.SudokuType;
+import org.ufc.utils.SudokuReader;
 
 public final class Tester {
-    private static int MAX_ATP = 15000;
+    private static final int MAX_ATP = 15_000;
 
     private Tester() {}
 
@@ -21,7 +22,7 @@ public final class Tester {
         testBacktracking(SudokuType.S12);
 
         System.out.println("\n\n");
-//
+
         System.out.println("===============================SATURBFS===============================");
         testSaturBFS(SudokuType.S4);
         testSaturBFS(SudokuType.S6);
@@ -32,46 +33,35 @@ public final class Tester {
     }
 
     private static void testSaturBFS(SudokuType type) {
-        System.out.println("-------------------Sudoku " + type.getDegree() + "-------------------");
+        System.out.println("-------------------------------Sudoku " + type.getDegree() + "-------------------------------");
         testSudokuBFSByDifficult(type, Difficult.EASY);
+        testSudokuBFSByDifficult(type, Difficult.MEDIUM);
         testSudokuBFSByDifficult(type, Difficult.HARD);
     }
 
     private static void testBacktracking(SudokuType type) {
-        System.out.println("-------------------Sudoku " + type.getDegree() + "-------------------");
+        System.out.println("-------------------------------Sudoku " + type.getDegree() + "-------------------------------------------");
         testSudokuBacktrackingByDifficult(type, Difficult.EASY);
+        testSudokuBacktrackingByDifficult(type, Difficult.MEDIUM);
         testSudokuBacktrackingByDifficult(type, Difficult.HARD);
     }
 
     private static void testSudokuBacktrackingByDifficult(SudokuType type, Difficult difficult) {
-        Integer[] sudoku = SudokuReader.readSudokuFile(type, difficult);
-        double totalTimeExpended = 0;
-        int totalSudokuSolveds = 0;
-
-        Backtracking backtracking = new Backtracking(type);
-
-        for (int cont = 1; cont <= MAX_ATP; cont++) {
-            ExecutionResult executionResult = TimeCalculator.calcularTempoDeExecucao(
-                    () -> backtracking.solve(sudoku.clone())
-            );
-
-            totalTimeExpended += executionResult.timeExpended();
-            totalSudokuSolveds += executionResult.solved() ? 1: 0;
-        }
-
-        printFeedback(difficult, totalTimeExpended, totalSudokuSolveds);
+        testSudokuDifficult(new Backtracking(type), type, difficult);
     }
 
     private static void testSudokuBFSByDifficult(SudokuType type, Difficult difficult) {
+        testSudokuDifficult(new SaturBFS(type), type, difficult);
+    }
+
+    private static void testSudokuDifficult(SudokuSolver sudokuSolver, SudokuType type, Difficult difficult) {
         Integer[] sudoku = SudokuReader.readSudokuFile(type, difficult);
         double totalTimeExpended = 0;
         int totalSudokuSolveds = 0;
 
-        SaturBFS saturBFS = new SaturBFS(type);
-
         for (int cont = 1; cont <= MAX_ATP; cont++) {
             ExecutionResult executionResult = TimeCalculator.calcularTempoDeExecucao(
-                    () -> saturBFS.saturBFS(sudoku.clone())
+                    () -> sudokuSolver.solve(sudoku.clone())
             );
 
             totalTimeExpended += executionResult.timeExpended();

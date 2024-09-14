@@ -1,4 +1,4 @@
-package org.ufc.algorithms;
+package org.ufc.sudoku;
 
 public final class SudokuType {
     private int degree;
