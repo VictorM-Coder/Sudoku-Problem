@@ -8,28 +8,35 @@ import org.ufc.sudoku.SudokuType;
 import org.ufc.utils.SudokuReader;
 
 public final class Tester {
-    private static final int MAX_ATP = 15_000;
+    private static final int MAX_ATP = 1;
 
     private Tester() {}
 
     public static void test() {
         System.out.println("===============================BACKTRACKING===============================");
-        testBacktracking(SudokuType.S4);
-        testBacktracking(SudokuType.S6);
-        testBacktracking(SudokuType.S8);
-        testBacktracking(SudokuType.S9);
-        testBacktracking(SudokuType.S10);
-        testBacktracking(SudokuType.S12);
+        testSudoku12Hard(new Backtracking(SudokuType.S12), 0);
+        testSudoku12Hard(new Backtracking(SudokuType.S12), 1);
+        testSudoku12Hard(new Backtracking(SudokuType.S12), 2);
+        testSudoku12Hard(new Backtracking(SudokuType.S12), 3);
+        testSudoku12Hard(new Backtracking(SudokuType.S12), 4);
+        testSudoku12Hard(new Backtracking(SudokuType.S12), 5);
 
-        System.out.println("\n\n");
-
-        System.out.println("===============================SATURBFS===============================");
-        testSaturBFS(SudokuType.S4);
-        testSaturBFS(SudokuType.S6);
-        testSaturBFS(SudokuType.S8);
-        testSaturBFS(SudokuType.S9);
-        testSaturBFS(SudokuType.S10);
-        testSaturBFS(SudokuType.S12);
+//        testBacktracking(SudokuType.S4);
+//        testBacktracking(SudokuType.S6);
+//        testBacktracking(SudokuType.S8);
+//        testBacktracking(SudokuType.S9);
+//        testBacktracking(SudokuType.S10);
+//        testBacktracking(SudokuType.S12);
+//
+//        System.out.println("\n\n");
+//
+//        System.out.println("===============================SATURBFS===============================");
+//        testSaturBFS(SudokuType.S4);
+//        testSaturBFS(SudokuType.S6);
+//        testSaturBFS(SudokuType.S8);
+//        testSaturBFS(SudokuType.S9);
+//        testSaturBFS(SudokuType.S10);
+//        testSaturBFS(SudokuType.S12);
     }
 
     private static void testSaturBFS(SudokuType type) {
@@ -69,6 +76,23 @@ public final class Tester {
         }
 
         printFeedback(difficult, totalTimeExpended, totalSudokuSolveds);
+    }
+
+    private static void testSudoku12Hard(SudokuSolver sudokuSolver, int pos) {
+        Integer[] sudoku = SudokuReader.readSudokuFile(SudokuType.S12, Difficult.HARD, pos);
+        double totalTimeExpended = 0;
+        int totalSudokuSolveds = 0;
+
+        for (int cont = 1; cont <= MAX_ATP; cont++) {
+            ExecutionResult executionResult = TimeCalculator.calcularTempoDeExecucao(
+                    () -> sudokuSolver.solve(sudoku.clone())
+            );
+
+            totalTimeExpended += executionResult.timeExpended();
+            totalSudokuSolveds += executionResult.solved() ? 1: 0;
+        }
+
+        printFeedback(Difficult.HARD, totalTimeExpended, totalSudokuSolveds);
     }
 
     private static void printFeedback(Difficult difficult, double totalTimeExpended, int totalSudokuSolveds) {

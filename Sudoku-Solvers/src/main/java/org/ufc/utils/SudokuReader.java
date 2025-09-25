@@ -34,6 +34,37 @@ public final class SudokuReader {
         );
     }
 
+    public static Integer[] readSudokuFile(SudokuType sudokuType, Difficult difficult, int pos) {
+        int n = sudokuType.getDegree();
+        Integer[] vertexColor = new Integer[n * n];
+        int cont = 0;
+
+        try (
+                FileReader file = new FileReader(buildFileName(n, difficult, pos));
+                BufferedReader bufferedReader = new BufferedReader(file)
+        ) {
+            String line = bufferedReader.readLine();
+            String[] values;
+
+            while ((line != null) && !(line.isEmpty())) {
+                values = line.split("-");
+
+                for (String s : values) {
+                    int value = Integer.parseInt(s.trim());
+                    if (value != 0) {
+                        vertexColor[cont] = value;
+                    }
+                    cont++;
+                }
+                line = bufferedReader.readLine();
+            }
+
+            return vertexColor;
+        } catch (IOException e) {
+            return new Integer[0];
+        }
+    }
+
     public static Integer[] readSudokuFile(SudokuType sudokuType, Difficult difficult) {
         int n = sudokuType.getDegree();
         Integer[] vertexColor = new Integer[n * n];
@@ -71,5 +102,13 @@ public final class SudokuReader {
 
         return "sudokus/" + n + "x" + n + "/" + n + "x" + n + "_" +
                 difficultString + ".txt";
+    }
+
+    private static String buildFileName(int n, Difficult difficult, int pos) {
+        String difficultString =
+                (difficult == Difficult.EASY) ? "easy" : "hard";
+
+        return "sudokus/" + n + "x" + n + "/" + n + "x" + n + "_" +
+                difficultString + "-" + pos + ".txt";
     }
 }
